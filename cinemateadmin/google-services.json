@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79052586858",
+    "project_id": "crud-cinemate",
+    "storage_bucket": "crud-cinemate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79052586858:android:29e0fb7c32db78c26faf13",
+        "android_client_info": {
+          "package_name": "com.example.cinemateadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2bupu_WI2RdsBoBncPl9trTYjb-MbMZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
