@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cinemateadmin.databinding.ActivityUploadBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
@@ -26,7 +25,6 @@ class UploadActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUploadBinding
 
-    private val fab: FloatingActionButton? = null
     private var submitAdd: Button? = null
     private var addPoster: ImageView? = null
     private var addTitle: EditText? = null

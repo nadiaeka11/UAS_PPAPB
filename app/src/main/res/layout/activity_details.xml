@@ -162,20 +162,5 @@
         android:textColor="#000"
         android:textSize="16sp"/>
 
-        <Button
-            android:id="@+id/getTicketButton"
-            android:layout_width="380dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/sinopsis"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp"
-            android:backgroundTint="@color/red"
-            android:fontFamily="@font/poppins"
-            android:text="Get Ticket"
-            android:textSize="20sp"
-            app:cornerRadius = "15dp"
-            tools:layout_marginBottom="0dp" />
-
 </RelativeLayout>
     </ScrollView>

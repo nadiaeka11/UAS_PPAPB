@@ -31,12 +31,13 @@
         android:padding="24dp">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="190dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:orientation="vertical"
             android:id="@+id/edtPoster"
-            tools:src="@drawable/img_placeholder"
-            android:layout_marginLeft="65dp"
+            android:src="@drawable/addimg"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:scaleType="fitXY"/>
 
         <ProgressBar

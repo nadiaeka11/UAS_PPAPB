@@ -95,7 +95,7 @@
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="30dp"
-                    android:backgroundTint="@color/blue"
+                    android:backgroundTint="@color/navy"
                     android:fontFamily="@font/poppins"
                     android:text="@string/checkboxR"
                     android:textSize="10sp" />
@@ -109,7 +109,7 @@
                     android:layout_toRightOf="@id/checkbox"
                     android:fontFamily="@font/poppins"
                     android:text="Terms"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/navy"
                     android:textSize="10sp" />
 
                 <TextView
@@ -132,7 +132,7 @@
                     android:layout_toRightOf="@id/and"
                     android:fontFamily="@font/poppins"
                     android:text="Conditions"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/navy"
                     android:textSize="10sp" />
 
                 <TextView
@@ -183,7 +183,7 @@
             android:layout_toRightOf="@id/newmember"
             android:fontFamily="@font/poppins_medium"
             android:text="Login"
-            android:textColor="@color/blue"
+            android:textColor="@color/navy"
             android:textSize="13sp" />
     </RelativeLayout>
 </LinearLayout>

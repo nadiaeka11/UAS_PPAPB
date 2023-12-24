@@ -6,12 +6,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 // Mendefinisikan entitas Note untuk digunakan oleh Room Database
-@Entity(tableName = "note_table")
-data class Note(
+@Entity(tableName = "movie_table")
+data class MovieEntity(
     // ID merupakan primary key yang akan di-generate secara otomatis
     @PrimaryKey(autoGenerate = true)
     @NonNull
     val id: Int=0,
+
+    // Kolom date untuk menyimpan tanggal catatan
+    @ColumnInfo(name = "image")
+    val imageURL: String,
 
     // Kolom title untuk menyimpan judul catatan
     @ColumnInfo(name = "title")
@@ -19,9 +23,5 @@ data class Note(
 
     // Kolom description untuk menyimpan deskripsi catatan
     @ColumnInfo(name = "description")
-    val description: String,
-
-    // Kolom date untuk menyimpan tanggal catatan
-    @ColumnInfo(name = "date")
-    val date: String
+    val description: String
     )

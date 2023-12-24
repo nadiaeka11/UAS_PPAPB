@@ -35,9 +35,22 @@
             android:layout_height="200dp"
             android:orientation="vertical"
             android:id="@+id/addPoster"
-            tools:src="@drawable/addimg"
-            android:layout_marginLeft="65dp"
+            android:src="@drawable/addimg"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relative"
+            android:layout_margin="10dp"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/posterImage"/>
+        </RelativeLayout>
 
         <ProgressBar
             android:layout_width="wrap_content"

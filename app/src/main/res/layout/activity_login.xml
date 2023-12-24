@@ -80,7 +80,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="30dp"
-                    android:backgroundTint="@color/blue"
+                    android:backgroundTint="@color/navy"
                     android:fontFamily="@font/poppins"
                     android:text="@string/checkbox"
                     android:textSize="10sp" />
@@ -96,7 +96,7 @@
                     android:layout_toRightOf="@id/checkbox"
                     android:fontFamily="@font/poppins"
                     android:text="Forget Password?"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/navy"
                     android:textSize="10sp" />
             </RelativeLayout>
 
@@ -138,6 +138,6 @@
             android:text="Register Now"
             android:textSize="13sp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/blue" />
+            android:textColor="@color/navy" />
     </RelativeLayout>
 </LinearLayout>
