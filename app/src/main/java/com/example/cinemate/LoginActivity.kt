@@ -83,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun isValidUsernamePassword(): Boolean{
         val username = prefManager.getUsername()
         val password = prefManager.getPassword()
