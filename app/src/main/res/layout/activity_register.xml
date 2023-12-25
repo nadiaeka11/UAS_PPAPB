@@ -43,7 +43,7 @@
                 android:id="@+id/emailReg"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_mail_24"
                 android:drawablePadding="8dp"
@@ -82,10 +82,26 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
+            <EditText
+                android:id="@+id/passwordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/password">
+                android:layout_below="@id/passwordConfirm">
 
                 <CheckBox
                     android:id="@+id/checkbox"
@@ -94,7 +110,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="2dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="15dp"
                     android:backgroundTint="@color/navy"
                     android:fontFamily="@font/poppins"
                     android:text="@string/checkboxR"
@@ -147,8 +163,14 @@
                     android:textSize="10sp" />
             </RelativeLayout>
 
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:visibility="gone"/>
+
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/regButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/red"
@@ -162,7 +184,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/LoginButton"
+        android:layout_below="@+id/regButton"
         android:layout_gravity="center_horizontal">
 
         <TextView
@@ -175,7 +197,7 @@
             android:textSize="13sp" />
 
         <TextView
-            android:id="@+id/register2"
+            android:id="@+id/loginNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"

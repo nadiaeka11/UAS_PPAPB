@@ -1,26 +1,103 @@
 package com.example.cinemate
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import com.example.cinemate.R
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
+import com.example.cinemate.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var emailReg: EditText
-    private lateinit var usernameReg: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var registerButton: Button
+    //Mendeklarasi variabel binding untuk mengikat elemen tampilan pada layout activity_main
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var prefManager: PrefManager
+    private lateinit var auth: FirebaseAuth
+    private lateinit var progressBar: ProgressBar
+    private lateinit var textView: TextView
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.activity_register, container, false)
-        // find views and handle button click
-        return view
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            startActivity(Intent(this@RegisterActivity, Layout::class.java))
+            finish()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //menginisialisasi variabel binding. Metode inflate digunakan untuk menghubungkan layout XML activity_main.xml dengan kode Kotlin, sehingga dapat mengakses elemen-elemen tampilan yang ada di dalamnya.
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        prefManager = PrefManager.getInstance(this)
+
+        auth = FirebaseAuth.getInstance()
+        progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        textView = findViewById(R.id.loginNow)
+
+        with(binding){
+            //menginisialisasi handler klik untuk elemen dengan ID login
+            regButton.setOnClickListener {
+                val email = emailReg.text.toString().trim()
+                val username = usernameReg.text.toString().trim()
+                val password = passwordReg.text.toString().trim()
+                val confirmPassword = passwordConfirm.text.toString()
+                progressBar?.visibility = View.INVISIBLE
+
+                if (username.isEmpty() || password.isEmpty() ||
+                    confirmPassword.isEmpty()) {
+                    Toast.makeText(
+                        this@RegisterActivity, "Mohon isi semua data",
+                        Toast.LENGTH_SHORT).show()
+                } else if (password != confirmPassword) {
+                    Toast.makeText(this@RegisterActivity, "Password tidak sama",
+                        Toast.LENGTH_SHORT).show()
+                } else {
+                    prefManager.saveEmail(email)
+                    prefManager.saveUsername(username)
+                    prefManager.savePassword(password)
+                    prefManager.setLoggedIn(true)
+                    checkLoginStatus()
+                }
+
+                auth.createUserWithEmailAndPassword(username, password)
+                    .addOnCompleteListener(this@RegisterActivity) { task ->
+                        progressBar?.visibility = View.INVISIBLE
+                        if (task.isSuccessful) {
+                            Toast.makeText(
+                                this@RegisterActivity, "Account created: ${task.exception?.message}",
+                                Toast.LENGTH_SHORT).show()
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(
+                                this@RegisterActivity, "Authentication failed: ${task.exception?.message}",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+
+            textView.setOnClickListener{
+                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+            }
+        }
+    }
+    private fun checkLoginStatus() {
+        val isLoggedIn = prefManager.isLoggedIn()
+        if (isLoggedIn) {
+            Toast.makeText(this@RegisterActivity, "Registrasi berhasil",
+                Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@RegisterActivity, Layout::class.java))
+            finish()
+        } else {
+            Toast.makeText(this@RegisterActivity, "Registrasi gagal",
+                Toast.LENGTH_SHORT).show()
+        }
+
     }
 }

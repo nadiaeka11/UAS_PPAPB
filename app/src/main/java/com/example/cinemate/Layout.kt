@@ -1,12 +1,20 @@
 package com.example.cinemate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.cinemate.databinding.ActivityLayoutBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class Layout : AppCompatActivity() {
     private lateinit var binding: ActivityLayoutBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user: FirebaseUser
+    private lateinit var textView: TextView
+
     companion object {
         const val EXT_USN = "ext_usn"
         const val EXT_PASS = "ext_pass"
@@ -18,37 +26,52 @@ class Layout : AppCompatActivity() {
         binding = ActivityLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mendapatkan data username dari intent
-        val username = intent.getStringExtra(EXT_USN)
+        auth = FirebaseAuth.getInstance()
+        user = auth.currentUser!!
 
-        // Membuat bundle untuk mengirim data ke fragment
-        val bundle = Bundle()
-        bundle.putString(EXT_USN, username)
+        if (user != null) {
+            // Mendapatkan data username dari intent
+            val username = intent.getStringExtra(EXT_USN)
 
-        // Membuat instance HomeFragment
-        val homeFragment = HomeFragment()
-        // Menetapkan argument bundle ke HomeFragment
-        homeFragment.arguments = bundle
+            // Membuat bundle untuk mengirim data ke fragment
+            val bundle = Bundle()
+            bundle.putString(EXT_USN, username)
 
-        // Membuat instance AccountFragment
-        val accountFragment = AccountFragment()
-        // Menetapkan argument bundle ke AccountFragment
-        accountFragment.arguments = bundle
+            // Membuat instance HomeFragment
+            val homeFragment = HomeFragment()
+            // Menetapkan argument bundle ke HomeFragment
+            homeFragment.arguments = bundle
 
-        // Menampilkan HomeFragment saat pertama kali aplikasi dibuka
-        replaceFragment(homeFragment)
+            // Membuat instance HomeFragment
+            val favFragment = FavFragment()
+            // Menetapkan argument bundle ke HomeFragment
+            favFragment.arguments = bundle
 
-        // Mengatur event listener untuk BottomNavigationView
-        with(binding) {
-            bottomNavbar.setOnItemSelectedListener() {
-                // Menangani pemilihan item pada BottomNavigationView
-                when(it.itemId){
-                    R.id.itemHome -> replaceFragment(HomeFragment())
-                    R.id.itemAccount -> replaceFragment(AccountFragment())
-                    else -> {}
+            // Membuat instance AccountFragment
+            val accountFragment = AccountFragment()
+            // Menetapkan argument bundle ke AccountFragment
+            accountFragment.arguments = bundle
+
+            // Menampilkan HomeFragment saat pertama kali aplikasi dibuka
+            replaceFragment(homeFragment)
+
+            // Mengatur event listener untuk BottomNavigationView
+            with(binding) {
+                bottomNavbar.setOnItemSelectedListener() {
+                    // Menangani pemilihan item pada BottomNavigationView
+                    when (it.itemId) {
+                        R.id.itemHome -> replaceFragment(HomeFragment())
+                        R.id.itemFav -> replaceFragment(FavFragment())
+                        R.id.itemAccount -> replaceFragment(AccountFragment())
+                        else -> {}
+                    }
+                    true
                 }
-                true
             }
+        } else {
+            // User is not authenticated, redirect to LoginActivity
+            startActivity(Intent(this@Layout, LoginActivity::class.java))
+            finish()
         }
     }
 

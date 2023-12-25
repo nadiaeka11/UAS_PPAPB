@@ -26,7 +26,6 @@
             android:layout_gravity="center_horizontal"
             android:padding="24dp">
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,11 +37,10 @@
                 android:textColor="@color/red"
                 android:fontFamily="@font/poppins_bold"/>
 
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/username"
+                android:id="@+id/edtUsername"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_2_24"
                 android:drawablePadding="8dp"
@@ -56,7 +54,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/password"
+                android:id="@+id/edtPassword"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
@@ -71,7 +69,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/password">
+                android:layout_below="@id/edtPassword">
 
                 <CheckBox
                     android:id="@+id/checkbox"
@@ -83,7 +81,7 @@
                     android:backgroundTint="@color/navy"
                     android:fontFamily="@font/poppins"
                     android:text="@string/checkbox"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"/>
 
                 <TextView
                     android:id="@+id/terms"
@@ -97,8 +95,14 @@
                     android:fontFamily="@font/poppins"
                     android:text="Forget Password?"
                     android:textColor="@color/navy"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"/>
             </RelativeLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:visibility="gone"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -129,7 +133,7 @@
             />
 
         <TextView
-            android:id="@+id/register2"
+            android:id="@+id/registerNow"
             android:layout_toRightOf="@id/newmember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -138,6 +142,6 @@
             android:text="Register Now"
             android:textSize="13sp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/navy" />
+            android:textColor="@color/navy"/>
     </RelativeLayout>
 </LinearLayout>
