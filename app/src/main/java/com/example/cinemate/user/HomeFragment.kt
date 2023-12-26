@@ -1,4 +1,4 @@
-package com.example.cinemate
+package com.example.cinemate.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.GridView
 import android.widget.TextView
+import com.example.cinemate.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,23 +39,20 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Menghubungkan layout fragment_home.xml dengan kode Kotlin
-        val fragmentInflater = inflater.inflate(R.layout.fragment_home, container, false)
-        val gridView = fragmentInflater.findViewById<ImageView>(R.id.gridView)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // Mendapatkan nilai username dari argumen, atau mengambil nilai default jika null
-        val username = arguments?.getString(Layout.EXT_USN) ?: "DefaultUsername"
+        val gridView = view.findViewById<GridView>(R.id.gridView)
+        val text: TextView = view.findViewById(R.id.editUsername)
 
-        // Menetapkan nilai username ke elemen TextView pada layout
-        val usernameTextView = fragmentInflater.findViewById<TextView>(R.id.editUsername)
-        usernameTextView.text = username
+        val value = arguments?.getString(EXT_USN)
+        text.text = "Your Username: $value"
 
-        // Menambahkan event listener pada elemen card (dapat disesuaikan)
-        gridView.setOnClickListener() {
-            // Memulai intent untuk berpindah ke DetailsActivity
+        // Set OnItemClickListener for gridView
+        gridView.setOnItemClickListener { parent, view, position, id ->
+            // Handle item click here
             startActivity(Intent(requireContext(), DetailsActivity::class.java))
         }
-
-        return fragmentInflater
+        return view
     }
 
     companion object {
@@ -66,12 +64,13 @@ class HomeFragment : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment HomeFragment.
          */
+        const val EXT_USN = "EXT_USERNAME" // Define EXT_USN here
         // Membuat instance fragment dengan parameter username
         @JvmStatic
         fun newInstance(param1: String) =
             HomeFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+                    putString(EXT_USN, param1)
                 }
             }
     }

@@ -1,4 +1,4 @@
-package com.example.cinemate;
+package com.example.cinemate.admin;
 
 public class DataClass {
     private String imageURL, caption, title;

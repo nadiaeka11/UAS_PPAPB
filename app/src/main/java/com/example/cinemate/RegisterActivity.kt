@@ -1,15 +1,14 @@
 package com.example.cinemate
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.example.cinemate.databinding.ActivityRegisterBinding
+import com.example.cinemate.user.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
@@ -25,7 +24,7 @@ class RegisterActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            startActivity(Intent(this@RegisterActivity, Layout::class.java))
+            startActivity(Intent(this@RegisterActivity, HomeFragment::class.java))
             finish()
         }
     }
@@ -70,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
                     .addOnCompleteListener(this@RegisterActivity) { task ->
                         progressBar?.visibility = View.INVISIBLE
                         if (task.isSuccessful) {
+                            prefManager.setLoggedIn(true)
                             Toast.makeText(
                                 this@RegisterActivity, "Account created: ${task.exception?.message}",
                                 Toast.LENGTH_SHORT).show()
@@ -81,7 +81,6 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     }
             }
-
             textView.setOnClickListener{
                 startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
             }
@@ -92,7 +91,7 @@ class RegisterActivity : AppCompatActivity() {
         if (isLoggedIn) {
             Toast.makeText(this@RegisterActivity, "Registrasi berhasil",
                 Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this@RegisterActivity, Layout::class.java))
+            startActivity(Intent(this@RegisterActivity, HomeFragment::class.java))
             finish()
         } else {
             Toast.makeText(this@RegisterActivity, "Registrasi gagal",

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cinemate.user.DataClass
 
 class MyAdapter(private val context: Context, private val dataList: ArrayList<DataClass>) :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {

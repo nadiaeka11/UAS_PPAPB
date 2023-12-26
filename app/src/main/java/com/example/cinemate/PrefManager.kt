@@ -58,5 +58,8 @@ class  PrefManager private constructor(context: Context) {
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply()
+        // Add the following line to clear the login status
+        editor.putBoolean(KEY_IS_LOGGED_IN, false)
+        editor.apply()
     }
 }

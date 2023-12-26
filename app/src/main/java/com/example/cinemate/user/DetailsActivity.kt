@@ -1,4 +1,4 @@
-package com.example.cinemate
+package com.example.cinemate.user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
