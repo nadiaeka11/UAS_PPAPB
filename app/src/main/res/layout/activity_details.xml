@@ -1,166 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#FEFAFD"
+                android:contentDescription="Back"
+                android:onClick="goToHomePage"
+                android:src="@drawable/baseline_arrow_back_ios_new_24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins"
+                android:text="Details Movie"
+                android:textColor="#000"
+                android:textSize="24sp"/>
+            <ImageView
+                android:id="@+id/poster"
+                android:layout_width="350dp"
+                android:layout_height="450dp"
+                android:src="@drawable/poster3"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/backButton"
+                android:layout_marginTop="16dp"/>
+            <TextView
+                android:id="@+id/judul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/poster"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="30dp"
+                android:text="Mencuri Raden Saleh"
+                android:textSize="25sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"/>
 
-    <!-- Tombol Back -->
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#FEFAFD"
-            android:contentDescription="Back"
-            android:onClick="goToHomePage"
-            android:src="@drawable/baseline_arrow_back_ios_new_24" />
-
-
-    <!-- Judul Halaman -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins"
-            android:text="Details Movie"
-            android:textColor="#000"
-            android:textSize="24sp"/>
-
-    <!-- Gambar Poster Besar -->
-    <ImageView
-        android:id="@+id/poster"
-        android:layout_width="350dp"
-        android:layout_height="450dp"
-        android:src="@drawable/poster3"
-        android:scaleType="centerCrop"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/backButton"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Judul Film -->
-    <TextView
-        android:id="@+id/judul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/poster"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="30dp"
-        android:text="Mencuri Raden Saleh"
-        android:textSize="25sp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins"/>
-
-    <!-- Director dan Rating -->
-    <LinearLayout
-        android:id="@+id/director"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/judul">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Director: Angga Dwimas Sasongko"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:fontFamily="@font/poppins"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="|"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4.9"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:fontFamily="@font/poppins"/>
-    </LinearLayout>
-
-    <!-- Genre Film -->
-    <LinearLayout
-        android:id="@+id/genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="30dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/director">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drama"
-            android:textSize="16sp"
-            android:textColor="#FFF"
-            android:background="#A8190D"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/poppins"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supernatural Fiction"
-            android:textSize="16sp"
-            android:textColor="#FFF"
-            android:background="#A8190D"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:fontFamily="@font/poppins"/>
-    </LinearLayout>
-
-    <!-- Header Storyline -->
-    <TextView
-        android:id="@+id/storyline"
-        android:layout_below="@id/genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:text="Storyline"
-        android:textSize="25sp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins"/>
-
-    <!-- Sinopsis Film -->
-    <TextView
-        android:id="@+id/sinopsis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/storyline"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:fontFamily="@font/poppins"
-        android:padding="16dp"
-        android:text="Pencurian terbesar abad ini tinggal menghitung hari menjelang tanggal eksekusinya. Komplotan sudah lengkap dan siap menjalankan misi untuk mencuri lukisan sang maestro, Raden Saleh, yang berjudul Penangkapan Diponegoro. Pemalsuan, peretasan, pertarungan, dan manipulasi terjadi dalam pencurian berencana yang dijalankan oleh sekelompok anak muda amatiran."
-        android:textColor="#000"
-        android:textSize="16sp"/>
-
-</RelativeLayout>
+            <!-- Sinopsis Film -->
+            <TextView
+                android:id="@+id/sinopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/judul"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:fontFamily="@font/poppins"
+                android:padding="16dp"
+                android:text="Pencurian terbesar abad ini tinggal menghitung hari menjelang tanggal eksekusinya. Komplotan sudah lengkap dan siap menjalankan misi untuk mencuri lukisan sang maestro, Raden Saleh, yang berjudul Penangkapan Diponegoro. Pemalsuan, peretasan, pertarungan, dan manipulasi terjadi dalam pencurian berencana yang dijalankan oleh sekelompok anak muda amatiran."
+                android:textColor="#000"
+                android:textSize="16sp"/>
+        </RelativeLayout>
     </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="25dp"
+        android:src="@drawable/baseline_favorite_border_24"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

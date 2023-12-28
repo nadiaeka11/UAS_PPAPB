@@ -9,30 +9,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.cinemate.LoginActivity
 import com.example.cinemate.R
+import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AccountFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AccountFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,30 +20,23 @@ class AccountFragment : Fragment() {
         // Inflate the layout for this fragment
         val fragmentInflater = inflater.inflate(R.layout.fragment_account, container, false)
 
+        // Mendapatkan referensi ke TextView untuk logout
         val logout = fragmentInflater.findViewById<TextView>(R.id.logoutText)
 
-        logout.setOnClickListener(){
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-        }
-        return fragmentInflater
-    }
+        // Mendapatkan instance dari FirebaseAuth
+        auth = FirebaseAuth.getInstance()
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic fun newInstance(param1: String, param2: String) =
-            AccountFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        // Menambahkan listener untuk logout
+        logout.setOnClickListener{
+            // Melakukan logout dari akun Firebase
+            auth.signOut()
+            // Memulai aktivitas LoginActivity setelah logout
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            // Menutup aktivitas saat ini
+            requireActivity().finish()
+        }
+
+        // Mengembalikan tata letak fragment yang telah dibuat
+        return fragmentInflater
     }
 }

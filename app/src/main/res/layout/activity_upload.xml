@@ -66,41 +66,41 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/addTitle"
-                android:background="@drawable/custom_edittext"
-                android:hint="Title"
-                android:layout_marginTop="15dp"
-                android:paddingLeft="20dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                android:fontFamily="@font/poppins_medium"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/addTitle"
+            android:background="@drawable/custom_edittext"
+            android:hint="Title"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:fontFamily="@font/poppins_medium"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/addDesc"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Description"
-                android:paddingLeft="20dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/addDesc"
+            android:background="@drawable/custom_edittext"
+            android:drawablePadding="8dp"
+            android:hint="Description"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="10dp"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/submitAdd"
-                android:text="Add"
-                android:textSize="18sp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="500dp"
-                android:backgroundTint="@color/red"
-                app:cornerRadius = "20dp"
-                android:fontFamily="@font/poppins_medium" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/submitAdd"
+            android:text="Add"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="500dp"
+            android:backgroundTint="@color/red"
+            app:cornerRadius = "20dp"
+            android:fontFamily="@font/poppins_medium" />
     </LinearLayout>
 </LinearLayout>

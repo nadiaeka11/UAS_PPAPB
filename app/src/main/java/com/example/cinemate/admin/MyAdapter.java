@@ -12,48 +12,58 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.cinemate.R;
+import com.example.cinemate.model.Movie;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
+    // Interface untuk menangani klik pada item RecyclerView
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
 
+    // Interface untuk menangani klik pada tombol hapus item RecyclerView
     public interface OnDeleteClickListener {
         void onDeleteClick(int position);
     }
 
     private Context context;
-    private ArrayList<DataClass> dataList;
+    private ArrayList<Movie> dataList;
     private OnItemClickListener itemClickListener;
     private OnDeleteClickListener deleteClickListener;
 
-    public MyAdapter(Context context, ArrayList<DataClass> dataList) {
+    // Konstruktor untuk MyAdapter
+    public MyAdapter(Context context, ArrayList<Movie> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
 
+    // Setter untuk OnItemClickListener
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.itemClickListener = listener;
     }
 
+    // Setter untuk OnDeleteClickListener
     public void setOnDeleteClickListener(OnDeleteClickListener listener) {
         this.deleteClickListener = listener;
     }
 
+    // ViewHolder yang berisi elemen-elemen UI dari setiap item RecyclerView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView recyclerImage;
 
+        // Konstruktor untuk MyViewHolder
         public MyViewHolder(@NonNull View itemView, final OnItemClickListener itemClickListener,
                             final OnDeleteClickListener deleteClickListener) {
             super(itemView);
             recyclerImage = itemView.findViewById(R.id.recyclerImage);
 
+            // Mendapatkan referensi tombol edit dan tombol hapus
             Button edtButton = itemView.findViewById(R.id.edtButton);
             Button delButton = itemView.findViewById(R.id.delButton);
 
+            // Menambahkan OnClickListener untuk tombol edit
             edtButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -66,6 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 }
             });
 
+            // Menambahkan OnClickListener untuk tombol hapus
             delButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,6 +91,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 
+    // Membuat ViewHolder baru
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -87,11 +99,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(v, itemClickListener, deleteClickListener);
     }
 
+    // Mengikat data ke ViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Glide.with(context).load(dataList.get(position).getImageURL()).into(holder.recyclerImage);
+        Glide.with(context).load(dataList.get(position).getImageUrl()).into(holder.recyclerImage);
     }
 
+    // Mendapatkan jumlah item dalam dataset
     @Override
     public int getItemCount() {
         return dataList.size();
